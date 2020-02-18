@@ -1,10 +1,16 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <b-navbar class="is-info">
+      <template slot="start">
+        <b-navbar-item tag="router-link" :to="{ path: '/' }">Home</b-navbar-item>
+      </template>
+      <template slot="end">
+        <b-navbar-item tag="router-link" :to="{ path: '/login' }">Login</b-navbar-item>
+      </template>
+    </b-navbar>
+    <section class="section">
+      <router-view/>
+    </section>
   </div>
 </template>
 
@@ -23,10 +29,6 @@
   a {
     font-weight: bold;
     color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
   }
 }
 </style>

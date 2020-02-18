@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "login": "writer@mail.com",
+      "password": 123456,
+      "role": "writer"
+    },
+    {
+      "id": 2,
+      "login": "reader@mail.com",
+      "password": 123456,
+      "role": "reader"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "Lorem ipsum",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ultricies vitae est vitae malesuada. In ut vulputate felis, id iaculis massa. Duis lectus sapien, aliquam pulvinar ex et, feugiat ultricies sapien. Pellentesque lacinia eleifend est id sollicitudin. Pellentesque interdum est nisl, ut viverra neque accumsan in. Sed ut consectetur augue, consequat porta est. In egestas, leo vel gravida blandit, dolor lorem dapibus sem, in egestas urna tellus at sem. Sed semper mi lectus.",
+      "claps": 0,
+      "createdAt": "2019-09-29T00:00:00.000Z",
+      "updateAt": "2019-09-29T00:00:00.000Z",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "title": "Название поста",
+      "description": "Текст",
+      "claps": 0,
+      "createdAt": "2019-09-29T00:00:00.000Z",
+      "updateAt": "2019-09-29T00:00:00.000Z",
+      "userId": 1
+    }
+  ]
+}
