@@ -18,19 +18,36 @@
       "id": 1,
       "title": "Lorem ipsum",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ultricies vitae est vitae malesuada. In ut vulputate felis, id iaculis massa. Duis lectus sapien, aliquam pulvinar ex et, feugiat ultricies sapien. Pellentesque lacinia eleifend est id sollicitudin. Pellentesque interdum est nisl, ut viverra neque accumsan in. Sed ut consectetur augue, consequat porta est. In egestas, leo vel gravida blandit, dolor lorem dapibus sem, in egestas urna tellus at sem. Sed semper mi lectus.",
-      "claps": 0,
+      "claps": 3,
       "createdAt": "2019-09-29T00:00:00.000Z",
       "updateAt": "2019-09-29T00:00:00.000Z",
       "userId": 1
     },
     {
-      "id": 2,
-      "title": "Название поста",
-      "description": "Текст",
+      "title": "Qwerty",
+      "description": "qwerty\nasdfg\nzxcvb",
       "claps": 0,
-      "createdAt": "2019-09-29T00:00:00.000Z",
-      "updateAt": "2019-09-29T00:00:00.000Z",
-      "userId": 1
+      "createdAt": "2020-02-18T19:02:09.424Z",
+      "updateAt": "",
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "title": "qwe test",
+      "description": "qwe\nasd\nzxc",
+      "claps": 1,
+      "createdAt": "2020-02-18T19:03:36.443Z",
+      "updateAt": "",
+      "userId": 1,
+      "id": 3,
+      "updatedAt": "2020-02-19T15:21:01.529Z"
+    },
+    {
+      "title": "Test",
+      "description": "test test test",
+      "userId": 1,
+      "createdAt": "2020-02-19T15:17:51.456Z",
+      "id": 4
     }
   ]
 }

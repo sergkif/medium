@@ -13,6 +13,17 @@ const routes = [
     path: '/login',
     name: 'LoginPage',
     component: () => import('../views/LoginPage.vue')
+  },
+  {
+    path: '/add',
+    name: 'AddPage',
+    component: () => import('../views/EditPage.vue')
+  },
+  {
+    path: '/edit/:id',
+    name: 'EditPage',
+    component: () => import('../views/EditPage.vue'),
+    props: true
   }
 ]
 

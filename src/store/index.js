@@ -5,23 +5,27 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    role: ''
+    user: {
+      role: '',
+      id: ''
+    }
   },
   mutations: {
-    setRole (state, payload) {
-      state.role = payload
+    setUser (state, payload) {
+      state.user.role = payload.role
+      state.user.id = payload.id
     }
   },
   actions: {
-    setRole (context, payload) {
-      context.commit('setRole', payload)
+    setUser (context, payload) {
+      context.commit('setUser', payload)
     }
   },
   modules: {
   },
   getters: {
-    role: state => {
-      return state.role
+    user: state => {
+      return state.user
     }
   }
 })

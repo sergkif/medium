@@ -17,14 +17,14 @@
         <div class="media-content">
         </div>
         <div class="media-right">
-          <div v-if="role" class="buttons">
-            <b-button v-if="role==='reader'" size="is-medium is-info">
+          <div v-if="user.role" class="buttons">
+            <b-button v-if="user.role==='reader'" size="is-medium is-info" @click="clap">
               Claps: {{ data.claps }}
             </b-button>
-            <b-button v-if="role==='writer'" size="is-medium is-info">
+            <b-button v-if="user.role==='writer' && data.userId===user.id" size="is-medium is-info" @click="editPost">
               Edit
             </b-button>
-            <b-button v-if="role==='writer'" size="is-medium is-info">
+            <b-button v-if="user.role==='writer' && data.userId===user.id" size="is-medium is-info" @click="deletePost">
               Delete
             </b-button>
           </div>
@@ -39,12 +39,11 @@
 
 <script>
 export default {
-  name: 'LoginForm',
+  name: 'Article',
   props: {
-    role: {
-      type: String,
-      required: false,
-      default: ''
+    user: {
+      type: Object,
+      required: false
     },
     data: {
       type: Object,
@@ -58,6 +57,39 @@ export default {
     }
   },
   methods: {
+    async clap () {
+      this.data.claps++
+      await fetch('http://localhost:3000/posts/' + this.data.id, {
+        method: 'PUT',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.data)
+      })
+        .then(response => {
+          if (response.status !== 200) {
+            throw new Error(response.statusText)
+          }
+        })
+        .catch(err => console.log(err))
+    },
+    editPost () {
+      this.$router.push({ path: '/edit/' + this.data.id, id: toString(this.data.id) })
+    },
+    async deletePost () {
+      await fetch('http://localhost:3000/posts/' + this.data.id, {
+        method: 'DELETE'
+      })
+        .then(response => {
+          if (response.status !== 200) {
+            throw new Error(response.statusText)
+          } else {
+            this.$emit('deleted', this.data.id)
+          }
+        })
+        .catch(err => console.log(err))
+    }
   }
 }
 </script>

@@ -10,12 +10,21 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import LoginForm from '@/components/LoginForm.vue'
 
 export default {
   name: 'LoginPage',
   components: {
     LoginForm
+  },
+  methods: {
+    ...mapActions({
+      setUser: 'setUser'
+    })
+  },
+  mounted () {
+    this.setUser({ role: '', id: '' })
   }
 }
 </script>

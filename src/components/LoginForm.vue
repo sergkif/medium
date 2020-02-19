@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      setRole: 'setRole'
+      setUser: 'setUser'
     }),
 
     async login () {
@@ -67,7 +67,7 @@ export default {
             if (data.length === 0) throw new Error('Email is invalid. Please, try again!')
             else if (toString(data[0].password) !== toString(this.loginForm.password)) throw new Error('Password is invalid. Please, try again!')
             else {
-              this.setRole(data[0].role)
+              this.setUser(data[0])
               this.$router.push({ path: '/' })
             }
           })

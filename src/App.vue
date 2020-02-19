@@ -1,18 +1,19 @@
 <template>
   <div id="app">
-    <b-navbar class="is-info">
-      <template slot="start">
-        <b-navbar-item tag="router-link" :to="{ path: '/' }">Home</b-navbar-item>
-      </template>
-      <template slot="end">
-        <b-navbar-item tag="router-link" :to="{ path: '/login' }">Login</b-navbar-item>
-      </template>
-    </b-navbar>
+    <Header/>
     <section class="section">
       <router-view/>
     </section>
   </div>
 </template>
+
+<script>
+import Header from '@/components/Header.vue'
+export default {
+  name: 'app',
+  components: { Header }
+}
+</script>
 
 <style lang="scss">
 #app {

@@ -2,11 +2,22 @@
   <div class="homePage">
     <div class="container" v-if="!error">
       <div class="field" v-for="item in data" :key="item.id">
-        <Article :role="role" :data="item"/>
+        <Article :user="user" :data="item" v-on:deleted="deleted"/>
       </div>
     </div>
     <div v-if="error" class="container">
       <span class="error">{{ error }}</span>
+    </div>
+    <div class="section">
+      <b-pagination
+            class="is-centered"
+            total="100"
+            current.sync="10"
+            aria-next-label="Next page"
+            aria-previous-label="Previous page"
+            aria-page-label="Page"
+            aria-current-label="Current page">
+        </b-pagination>
     </div>
   </div>
 </template>
@@ -20,7 +31,7 @@ export default {
   components: { Article },
   computed: {
     ...mapGetters({
-      role: 'role'
+      user: 'user'
     })
   },
   data () {
@@ -51,6 +62,11 @@ export default {
           console.log(err)
           this.error = err
         })
+    },
+    deleted (id) {
+      this.data.forEach(item => {
+        if (item.id === id) this.data.splice(this.data.indexOf(item), 1)
+      })
     }
   },
   mounted () {
