@@ -4,20 +4,22 @@
       <div class="field" v-for="item in data" :key="item.id">
         <Article :user="user" :data="item" v-on:deleted="deleted"/>
       </div>
-    </div>
-    <div v-if="error" class="container">
-      <span class="error">{{ error }}</span>
-    </div>
-    <div class="section">
-      <b-pagination
+      <div class="field">
+        <b-pagination
             class="is-centered"
-            total="100"
-            current.sync="10"
+            :total="totalPages"
+            :current="currentPage"
+            per-page="10"
             aria-next-label="Next page"
             aria-previous-label="Previous page"
             aria-page-label="Page"
-            aria-current-label="Current page">
+            aria-current-label="Current page"
+            @change="onPageChange">
         </b-pagination>
+      </div>
+    </div>
+    <div v-if="error" class="container">
+      <span class="error">{{ error }}</span>
     </div>
   </div>
 </template>
@@ -37,12 +39,14 @@ export default {
   data () {
     return {
       data: [],
-      error: ''
+      error: '',
+      currentPage: 1,
+      totalPages: 0
     }
   },
   methods: {
     async onInit () {
-      await fetch('http://localhost:3000/posts', {
+      await fetch('http://localhost:3000/posts?_limit=10&_page=' + this.currentPage, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -50,6 +54,7 @@ export default {
       })
         .then(response => {
           if (response.status === 200) {
+            this.totalPages = parseInt(Math.ceil(response.headers.get('X-Total-Count') / 10))
             return response.json()
           } else {
             throw new Error(response.statusText)
@@ -67,6 +72,9 @@ export default {
       this.data.forEach(item => {
         if (item.id === id) this.data.splice(this.data.indexOf(item), 1)
       })
+    },
+    onPageChange () {
+      console.log(this.currentPage)
     }
   },
   mounted () {
